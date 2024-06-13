@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 interface Options {
   //5
-  mongoUrl: '//mongo:KjhbygsbRcwaAKHNsTDvFmTugfnEoAdJ@viaduct.proxy.rlwy.net:12552';
+  mongoUrl: string;
   dbName: string;
 }
 
