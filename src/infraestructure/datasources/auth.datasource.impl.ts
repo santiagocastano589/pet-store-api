@@ -7,6 +7,8 @@ import {
   UserEntity,
 } from "../../domain"; //2
 
+import { UserMapper } from '../mappers/user.mapper';
+
 // creamos types de los metodos de encriptacion
 
 type HashFuntion = (password: string) => string;
@@ -43,14 +45,9 @@ export class AuthDataSourceImpl implements AuthDataSource {
 
       // TODO: Hash de contraseña
 
-      // TODO: Mapear la respuesta a nuestra entidad
-      return new UserEntity( // 6
-        user.id, // se reemplazó '1'
-        name,
-        email,
-        user.password,//se reemplazó por password
-        user.roles //se reemplazó ['USER']
-      );
+       // 3. Mapear la respuesta a nuestra entidad
+       return UserMapper.userEntityFromObject(user);
+       
     } catch (error) {
       if (error instanceof CustomError) {
         //7
