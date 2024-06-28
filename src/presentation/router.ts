@@ -1,19 +1,26 @@
+
 import { Router } from 'express'; // 2
 import { AuthRoutes } from './auth/router'; //6
+import swaggerUi from 'swagger-ui-express'
+import swaggerSetup from '../docs/swagger'
+
+
 
 export class AppRoutes { // 1
 
 
     static get routes(): Router { //3
-  
+
       const router = Router(); //4
-  
+
       // Definir todas mis rutas principales
+      router.use('/documentacion',swaggerUi.serve,swaggerUi.setup(swaggerSetup))
+
       router.use('/api/auth', AuthRoutes.routes ) // 7
 
  
       return router; //5
     }
-  
-  
-}
+
+
+ }
